@@ -1,9 +1,9 @@
-import 'package:bonus_assignment/add_task.dart';
+import 'package:bonus_assignment/UI/add_task.dart';
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import 'model_class.dart';
+import '../modal/model_class.dart';
 
 class TaskManager extends StatefulWidget {
   const TaskManager({super.key});
