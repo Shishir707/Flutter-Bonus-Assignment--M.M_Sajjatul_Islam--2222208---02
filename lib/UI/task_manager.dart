@@ -1,4 +1,5 @@
 import 'package:bonus_assignment/UI/add_task.dart';
+import 'package:bonus_assignment/Widgets/scafold_messenger.dart';
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -65,7 +66,7 @@ class _TaskManagerState extends State<TaskManager> {
     return ListView.separated(
       itemCount: _tasks.length,
       itemBuilder: (context, index) {
-        final task = _tasks[index];
+        final task = _tasks[index];s
 
         return ListTile(
           key: ValueKey(task.id),
@@ -91,7 +92,9 @@ class _TaskManagerState extends State<TaskManager> {
 
           trailing: IconButton(
             icon: Icon(Icons.delete, color: Colors.red),
-            onPressed: () {},
+            onPressed: () {
+              onPressedDeleteTask(task.id, task.title);
+            },
           ),
         );
       },
@@ -99,5 +102,10 @@ class _TaskManagerState extends State<TaskManager> {
         return Divider();
       },
     );
+  }
+
+  Future<void> onPressedDeleteTask(String taskId, String title) async {
+    await FirebaseFirestore.instance.collection("task").doc(taskId).delete();
+    trueScaffoldMessage(context, "Task $title deleted successfully!");
   }
 }
