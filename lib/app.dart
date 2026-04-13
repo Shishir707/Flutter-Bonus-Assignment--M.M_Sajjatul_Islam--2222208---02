@@ -40,8 +40,8 @@ class MyApp extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),
-            backgroundColor: Colors.green,
-            foregroundColor: Colors.white,
+            backgroundColor: Colors.yellow,
+            foregroundColor: Colors.black,
           ),
         ),
         scaffoldBackgroundColor: Colors.green.shade50,

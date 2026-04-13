@@ -1,3 +1,4 @@
+import 'package:bonus_assignment/add_task.dart';
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
@@ -14,11 +15,15 @@ class _TaskManagerState extends State<TaskManager> {
     return Scaffold(
       appBar: tmAppBar(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: onPressedAddTask,
         backgroundColor: Colors.deepPurpleAccent[200],
         foregroundColor: Colors.limeAccent,
         child: Icon(Icons.add),
       ),
     );
+  }
+
+  void onPressedAddTask() {
+    Navigator.push(context, MaterialPageRoute(builder: (_) => AddTask()));
   }
 }
