@@ -1,4 +1,4 @@
-# 📌 Task Manager App
+# 📌 Bonus Assignment
 
 A clean, modern, and efficient **Task Manager** built with **Flutter**.  
 This app helps users organize tasks, track progress, manage daily activities, and stay productive with a simple and intuitive UI.
