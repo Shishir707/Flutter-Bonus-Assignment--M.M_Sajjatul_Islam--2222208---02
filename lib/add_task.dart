@@ -1,13 +1,19 @@
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
-class AddTask extends StatelessWidget {
+class AddTask extends StatefulWidget {
+  const AddTask({super.key});
+
+  @override
+  State<AddTask> createState() => _AddTaskState();
+}
+
+class _AddTaskState extends State<AddTask> {
   final TextEditingController _tittleController = TextEditingController();
+
   final TextEditingController _descriptionController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  AddTask({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,5 +60,24 @@ class AddTask extends StatelessWidget {
     );
   }
 
-  void addTask() {}
+  Future<void> addTask() async {
+    setState(() {});
+
+    Map<String, dynamic> requestBody = {
+      "title": _tittleController.text.trim(),
+      "description": _descriptionController.text.trim(),
+    };
+
+    Future<void> clearController() async {
+      _tittleController.clear();
+      _descriptionController.clear();
+    }
+
+    @override
+    void dispose() {
+      _tittleController.dispose();
+      _descriptionController.dispose();
+      super.dispose();
+    }
+  }
 }
