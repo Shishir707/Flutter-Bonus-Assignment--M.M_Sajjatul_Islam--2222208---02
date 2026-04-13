@@ -1,16 +1,26 @@
-# bonus_assignment
+# 📌 Task Manager App
 
-A new Flutter project.
+A clean, modern, and efficient **Task Manager** built with **Flutter**.  
+This app helps users organize tasks, track progress, manage daily activities, and stay productive with a simple and intuitive UI.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- ➕ **Add New Tasks Easily**
+- 📱 **Smooth UI & Seamless Navigation**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 App Screenshots
+
+### Scrrens UI 
+<div align="center">
+
+| All Task | Add Task |
+|-------|-------|
+| <img src="assets/bonus.png" width="200" height="400" style="object-fit: cover; border-radius: 12px;"> | <img src="assets/bonus2.png" width="200" height="400" style="object-fit: cover; border-radius: 12px;"> |
+
+</div>
+
+---
