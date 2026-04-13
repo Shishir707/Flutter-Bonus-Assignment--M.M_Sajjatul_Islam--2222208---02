@@ -26,7 +26,7 @@ class _TaskManagerState extends State<TaskManager> {
         stream: _firestore.collection('task').snapshots(),
         builder: (context, asyncSnapshot) {
           if (asyncSnapshot.connectionState == ConnectionState.waiting) {
-            return  Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator());
           }
 
           if (asyncSnapshot.hasError) {
@@ -61,7 +61,6 @@ class _TaskManagerState extends State<TaskManager> {
     Navigator.push(context, MaterialPageRoute(builder: (_) => AddTask()));
   }
 
-
   ListView uiResult() {
     return ListView.separated(
       itemCount: _tasks.length,
@@ -69,12 +68,18 @@ class _TaskManagerState extends State<TaskManager> {
         final task = _tasks[index];
 
         return ListTile(
+          key: ValueKey(task.id.toString()),
+          leading: CircleAvatar(
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.black,
+            child: Text(task.id.toString()),
+          ),
+
           title: Text(
             task.title,
             style: Theme.of(context).textTheme.titleLarge,
           ),
           subtitle: Text(task.description),
-
 
           trailing: IconButton(
             icon: Icon(Icons.delete, color: Colors.red),
