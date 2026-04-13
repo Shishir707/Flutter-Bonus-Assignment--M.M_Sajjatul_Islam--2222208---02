@@ -26,3 +26,4 @@ flutter:
 
   assets:
     - assets/add_task.png
+    - assets/no_task.png

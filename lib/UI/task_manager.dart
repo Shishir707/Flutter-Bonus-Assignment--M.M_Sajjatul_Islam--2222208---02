@@ -1,5 +1,5 @@
 import 'package:bonus_assignment/UI/add_task.dart';
-import 'package:bonus_assignment/Widgets/scafold_messenger.dart';
+import 'package:bonus_assignment/Widgets/scaffold_messenger.dart';
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +31,7 @@ class _TaskManagerState extends State<TaskManager> {
           }
 
           if (asyncSnapshot.hasError) {
-            return Center(child: Text(asyncSnapshot.error.toString()));
+            falseScaffoldMessage(context, asyncSnapshot.error.toString());
           }
 
           if (asyncSnapshot.hasData) {
@@ -45,7 +45,9 @@ class _TaskManagerState extends State<TaskManager> {
             return uiResult();
           }
 
-          return Center(child: Text("No data"));
+          return Center(
+            child: Image.asset("assets/no_task.png", width: 200, height: 200),
+          );
         },
       ),
 
@@ -66,7 +68,7 @@ class _TaskManagerState extends State<TaskManager> {
     return ListView.separated(
       itemCount: _tasks.length,
       itemBuilder: (context, index) {
-        final task = _tasks[index];s
+        final task = _tasks[index];
 
         return ListTile(
           key: ValueKey(task.id),
