@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:bonus_assignment/Widgets/scafold_messenger.dart';
 import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -95,10 +98,12 @@ class _AddTaskState extends State<AddTask> {
       "createdAt": DateTime.now().toIso8601String(),
     });
 
-
-
     _titleController.clear();
     _descriptionController.clear();
+
+    trueScaffoldMessage(context, "✔️ Your task added successfully!");
+
+    await Future.delayed(const Duration(seconds: 2));
 
     Navigator.pop(context);
   }
