@@ -27,7 +27,20 @@ class _AddTaskState extends State<AddTask> {
           key: _formKey,
           child: Column(
             children: [
-              // Title
+              Image.asset(
+                "assets/add_task.png",
+                width: 800,
+                height: 300,
+                fit: BoxFit.cover,
+              ),
+              SizedBox(height: 10),
+              Text(
+                "Add Your New Task",
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 10),
               TextFormField(
                 controller: _titleController,
                 decoration: InputDecoration(
@@ -35,7 +48,7 @@ class _AddTaskState extends State<AddTask> {
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
-                    value == null || value.isEmpty ? "Enter title" : null,
+                    value == null || value.isEmpty ? "Enter task title" : null,
               ),
 
               SizedBox(height: 16),
@@ -79,6 +92,8 @@ class _AddTaskState extends State<AddTask> {
       "description": _descriptionController.text.trim(),
       "createdAt": DateTime.now().toIso8601String(),
     });
+
+
 
     _titleController.clear();
     _descriptionController.clear();
