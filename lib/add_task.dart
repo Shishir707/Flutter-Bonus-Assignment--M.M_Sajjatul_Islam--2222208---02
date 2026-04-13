@@ -45,6 +45,7 @@ class _AddTaskState extends State<AddTask> {
                 controller: _titleController,
                 decoration: InputDecoration(
                   labelText: "Title",
+                  hintText: "Enter Title",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
@@ -58,6 +59,7 @@ class _AddTaskState extends State<AddTask> {
                 maxLines: 4,
                 decoration: InputDecoration(
                   labelText: "Description",
+                  hintText: "Enter Description",
                   border: OutlineInputBorder(),
                 ),
                 validator: (value) =>
