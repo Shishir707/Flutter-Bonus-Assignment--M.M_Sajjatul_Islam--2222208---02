@@ -1,4 +1,5 @@
 import 'package:bonus_assignment/widgets/appbar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddTask extends StatefulWidget {
@@ -9,11 +10,12 @@ class AddTask extends StatefulWidget {
 }
 
 class _AddTaskState extends State<AddTask> {
-  final TextEditingController _tittleController = TextEditingController();
-
+  final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +27,28 @@ class _AddTaskState extends State<AddTask> {
           key: _formKey,
           child: Column(
             children: [
-              TextField(
-                controller: _tittleController,
+              // Title
+              TextFormField(
+                controller: _titleController,
                 decoration: InputDecoration(
                   labelText: "Title",
                   border: OutlineInputBorder(),
                 ),
+                validator: (value) =>
+                    value == null || value.isEmpty ? "Enter title" : null,
               ),
 
               SizedBox(height: 16),
 
-              TextField(
+              TextFormField(
                 controller: _descriptionController,
                 maxLines: 4,
                 decoration: InputDecoration(
                   labelText: "Description",
                   border: OutlineInputBorder(),
                 ),
+                validator: (value) =>
+                    value == null || value.isEmpty ? "Enter description" : null,
               ),
 
               SizedBox(height: 20),
@@ -50,7 +57,7 @@ class _AddTaskState extends State<AddTask> {
                 width: double.infinity,
                 child: FilledButton(
                   onPressed: addTask,
-                  child: Text("Add Task"),
+                  child: const Text("Add Task"),
                 ),
               ),
             ],
@@ -67,23 +74,22 @@ class _AddTaskState extends State<AddTask> {
   }
 
   Future<void> createTask() async {
-    setState(() {});
-
-    Map<String, dynamic> requestBody = {
-      "title": _tittleController.text.trim(),
+    await _firestore.collection("task").add({
+      "title": _titleController.text.trim(),
       "description": _descriptionController.text.trim(),
-    };
+      "createdAt": DateTime.now().toIso8601String(),
+    });
 
-    Future<void> clearController() async {
-      _tittleController.clear();
-      _descriptionController.clear();
-    }
+    _titleController.clear();
+    _descriptionController.clear();
 
-    @override
-    void dispose() {
-      _tittleController.dispose();
-      _descriptionController.dispose();
-      super.dispose();
-    }
+    Navigator.pop(context);
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
   }
 }

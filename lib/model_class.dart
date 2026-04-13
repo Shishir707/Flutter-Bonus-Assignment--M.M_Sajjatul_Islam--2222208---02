@@ -1,5 +1,5 @@
 class TaskModel {
-  final int id;
+  final String id;
   final String title;
   final String description;
   final DateTime? createdAt;
@@ -11,9 +11,9 @@ class TaskModel {
     this.createdAt,
   });
 
-  factory TaskModel.fromJson(Map<String, dynamic> jsonData) {
+  factory TaskModel.fromJson(Map<String, dynamic> jsonData, String docId) {
     return TaskModel(
-      id: jsonData['id'],
+      id: docId,
       title: jsonData['title'],
       description: jsonData['description'],
       createdAt: jsonData['createdAt'] != null

@@ -38,7 +38,7 @@ class _TaskManagerState extends State<TaskManager> {
 
             for (QueryDocumentSnapshot<Map<String, dynamic>> doc
                 in asyncSnapshot.data!.docs) {
-              _tasks.add(TaskModel.fromJson(doc.data()));
+              _tasks.add(TaskModel.fromJson(doc.data(), doc.id));
             }
 
             return uiResult();
@@ -68,18 +68,26 @@ class _TaskManagerState extends State<TaskManager> {
         final task = _tasks[index];
 
         return ListTile(
-          key: ValueKey(task.id.toString()),
-          leading: CircleAvatar(
-            backgroundColor: Colors.green,
-            foregroundColor: Colors.black,
-            child: Text(task.id.toString()),
-          ),
+          key: ValueKey(task.id),
+          leading: const Icon(Icons.task),
 
           title: Text(
             task.title,
             style: Theme.of(context).textTheme.titleLarge,
           ),
-          subtitle: Text(task.description),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(task.description),
+              SizedBox(height: 4),
+              Text(
+                task.createdAt != null
+                    ? task.createdAt.toString().split(".")[0]
+                    : "",
+                style: const TextStyle(fontSize: 12, color: Colors.grey),
+              ),
+            ],
+          ),
 
           trailing: IconButton(
             icon: Icon(Icons.delete, color: Colors.red),
