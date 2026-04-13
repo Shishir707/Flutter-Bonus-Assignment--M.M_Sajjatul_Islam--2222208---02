@@ -60,7 +60,13 @@ class _AddTaskState extends State<AddTask> {
     );
   }
 
-  Future<void> addTask() async {
+  void addTask() {
+    if (_formKey.currentState!.validate()) {
+      createTask();
+    }
+  }
+
+  Future<void> createTask() async {
     setState(() {});
 
     Map<String, dynamic> requestBody = {
