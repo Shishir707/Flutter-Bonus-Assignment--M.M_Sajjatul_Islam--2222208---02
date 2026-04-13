@@ -1,3 +1,4 @@
+import 'package:bonus_assignment/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 
 class TaskManager extends StatefulWidget {
@@ -11,19 +12,12 @@ class _TaskManagerState extends State<TaskManager> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Task Manager",
-          style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.yellow[400],
-      ),
+      appBar: tmAppBar(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
         backgroundColor: Colors.deepPurpleAccent[200],
         foregroundColor: Colors.limeAccent,
+        child: Icon(Icons.add),
       ),
     );
   }
